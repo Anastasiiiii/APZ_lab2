@@ -4,6 +4,7 @@ import (
         "flag"
 	"io"
         "os"
+	"strings"
         lab2 "github.com/Anastasiiiii/APZ_lab2"
 )
 
@@ -24,15 +25,27 @@ func main() {
                         panic("Both input methods are specified. Choose either -e or -f")
                 }
                 
-                // TODO: Create expression reading stream
+		inputStream = strings.NewReader(*inputExpression)
         } else if *inputFile != "" {
-                // TODO: Create file reading stream
+		file, err := os.Open(*inputFile)
+		if err != nil {
+			panic(err)
+		}
+		
+		defer file.Close()
+		inputStream = file
         } else {
                 panic("No input methods are specified. Choose either -e or -f")
         }
         
         if *outputFile != "" {
-                // TODO: Create file writing stream
+		file, err := os.Create(*outputFile)
+		if err != nil {
+			panic(err)
+		}
+
+		defer file.Close()
+		outputStream = file
         } else {
                 outputStream = os.Stdout
         }
@@ -43,7 +56,7 @@ func main() {
         }
 
         err := handler.Compute()
-        if err {
+        if err != nil {
                 panic(err)
         }
 }
