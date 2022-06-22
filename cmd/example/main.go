@@ -51,7 +51,7 @@ func main() {
         }
 
         handler := &lab2.ComputeHandler{
-                Input: inputStream.
+                Input: inputStream,
                 Output: outputStream,
         }
 
