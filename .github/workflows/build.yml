@@ -2,8 +2,9 @@ name: go tetsting and building
 
 on: 
     push:
-        branches: 
-             - master
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs: 
     cleaning:
