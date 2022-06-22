@@ -13,17 +13,18 @@ type ComputeHandler struct {
 }
 
 func (ch *ComputeHandler) Compute() error {
-	expression, err := ioutil.ReadAll(ch.Reader)
+	expression, err := ioutil.ReadAll(ch.Input)
+	if err != nil {
+		return err
+	}
+
+	var result string
+	result, err = PrefixToPostfix(string(prefix))
 	if err != nil {
 		return err	
 	}
-	
-	result, err := PrefixToPostfix(string(prefix))
-	if err != nil {
-		return err	
-	}
-	
-	_, err := ch.Output.Write([]byte(result))
+
+	_, err = ch.Output.Write([]byte(result))
 	if err != nil {
 		return err
 	}
