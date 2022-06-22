@@ -1,4 +1,4 @@
-name: go tetsting and building 
+name: Go testing and building 
 
 on: 
     push:
@@ -34,7 +34,7 @@ jobs:
             go-version: 1.18
             
         - name: test
-          run : o build -v ./cmd/example/main.go
+          run : go build -v ./cmd/example/main.go
       
             
     
