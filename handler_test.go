@@ -26,9 +26,8 @@ func TestPrefixToPostfix(test *testing.T) {
 }
 
 func TestEmptyExpression(test *testing.T) {
-    expression := ""
-    expected := ""
-    input := strings.NewReader(expression)
+	expression := ""
+	input := strings.NewReader(expression)
 	output := bytes.NewBufferString("")
 
 	handler := &ComputeHandler{
@@ -36,15 +35,14 @@ func TestEmptyExpression(test *testing.T) {
 		Output: output,
 	}
 
+
 	err := handler.Compute()
-	if assert.Nil(test, err) {
-		assert.Equal(test, expected, output.String())
-	}
+	assert.NotNil(test, err)
 }
 
 func TestWrongExpression(test *testing.T) {
 	expression := ""
-    input := strings.NewReader(expression)
+    	input := strings.NewReader(expression)
 	output := bytes.NewBufferString("")
 
 	handler := &ComputeHandler{
