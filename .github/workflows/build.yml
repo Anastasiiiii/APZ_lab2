@@ -10,8 +10,16 @@ jobs:
     testing:
         runs-on: ubuntu-latest
         steps:
-        - name: print
-          run : echo "Hello"
+        - name: clone repo
+          uses : actions/checkout@v1
+          
+        - name: install go
+          uses: actions/setup-go@v2
+          with:
+            go-version: 1.18
+            
+        - name: test
+          run : go test
             
     
    
