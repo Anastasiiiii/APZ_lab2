@@ -2,43 +2,18 @@ name: go tetsting and building
 
 on: 
     push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+        branches:  
+            - master 
 
 jobs: 
-    cleaning:
-        runs-on: ubuntu-latest:
-        steps:
-            - uses: actions/checkout@v3
-            - name: Set up Go
-              uses: actions/setup-go@v3
-              with:
-                go-version: 1.18
-            - name: clean
-                run: make clean
+
     testing:
         runs-on: ubuntu-latest
-        needs: [cleaning]
         steps:
-            - uses: actions/checkout@v3
-            - name: Set up Go
-            uses: actions/setup-go@v3
-            with:
-                go-version: 1.18
-            - name: Test
-                run: make test
+        - name: print
+          run : echo "Hello"
+            
     
-    building: 
-        runs-on: ubuntu-latest
-        needs: [testing]
-        steps:
-            - uses: actions/checkout@v3
-            - name: Set up Go
-            uses: actions/setup-go@v3
-            with:
-                go-version: 1.18
-            - name: Run
-                run: go build -v ./cmd/example/main.go
+   
     
 
