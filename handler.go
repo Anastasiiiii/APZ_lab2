@@ -19,7 +19,7 @@ func (ch *ComputeHandler) Compute() error {
 	}
 
 	var result string
-	result, err = PrefixToPostfix(string(prefix))
+	result, err = PrefixToPostfix(string(expression))
 	if err != nil {
 		return err	
 	}
