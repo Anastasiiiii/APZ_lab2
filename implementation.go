@@ -1,13 +1,13 @@
 package lab2
 
 import (
+	"errors"
 	"strconv"
 	"strings"
-	"errors"
 )
 
 type Node struct {
-	el string
+	el   string
 	next *Node
 }
 
@@ -19,7 +19,7 @@ func newNode(el string, top *Node) *Node {
 }
 
 type Stack struct {
-	top   *Node
+	top  *Node
 	size int
 }
 
@@ -53,16 +53,15 @@ func (this *Stack) popEl() string {
 	return tmpStr
 }
 
-
 func isOperator(symbol byte) bool {
 	switch symbol {
 	case
-	  '+',
-	  '-',
-	  '*',
-	  '/',
-	  '^':
-	  return true
+		'+',
+		'-',
+		'*',
+		'/',
+		'^':
+		return true
 	}
 	return false
 }
@@ -77,7 +76,7 @@ func isANumber(s string) bool {
 func PrefixToPostfix(prefix string) (string, error) {
 	if prefix == "" || prefix == " " {
 		return "", errors.New("Empty string is passed to function")
-	  }
+	}
 	var arr []string = strings.Split(prefix, " ")
 	var stack *Stack = createStack()
 	var el string = ""
@@ -104,11 +103,11 @@ func PrefixToPostfix(prefix string) (string, error) {
 			res = ""
 			err = errors.New("Invalid syntax")
 			break
-		  }
+		}
 	}
-	
+
 	res = stack.popEl()
 	err = nil
-	
+
 	return res, err
 }

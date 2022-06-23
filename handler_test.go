@@ -10,7 +10,7 @@ import (
 
 func TestPrefixToPostfix(test *testing.T) {
 	expression := "+ 2 * 3 6"
-	expected := "2 3 6 + *"
+	expected := "2 3 6 * +"
 	input := strings.NewReader(expression)
 	output := bytes.NewBufferString("")
 
