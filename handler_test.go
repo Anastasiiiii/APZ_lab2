@@ -10,12 +10,12 @@ import (
 
 func TestPrefixToPostfix(test *testing.T) {
 	expression := "+ 2 * 3 6"
-	expected := "2 3 6 * +"
+	expected := "2 3 6 + *"
 	input := strings.NewReader(expression)
 	output := bytes.NewBufferString("")
 
 	handler := &ComputeHandler{
-		Input: input,
+		Input:  input,
 		Output: output,
 	}
 
@@ -31,10 +31,9 @@ func TestEmptyExpression(test *testing.T) {
 	output := bytes.NewBufferString("")
 
 	handler := &ComputeHandler{
-		Input: input,
+		Input:  input,
 		Output: output,
 	}
-
 
 	err := handler.Compute()
 	assert.NotNil(test, err)
@@ -42,7 +41,7 @@ func TestEmptyExpression(test *testing.T) {
 
 func TestWrongExpression(test *testing.T) {
 	expression := ""
-    	input := strings.NewReader(expression)
+	input := strings.NewReader(expression)
 	output := bytes.NewBufferString("")
 
 	handler := &ComputeHandler{
